@@ -1,11 +1,10 @@
 function encodeText() {
     const inputText = document.getElementById('inputText').value;
-    if (/[A-ZáeíóúÜÑ]/.test(inputText)) {
+    if (/[A-ZáéíóúÑ]/.test(inputText)) {
         alert('El texto no debe contener mayúsculas ni acentos.');
         return;
     }
-    const sanitizedText = inputText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Elimina acentos
-    let encodedText = sanitizedText
+    let encodedText = inputText
         .replace(/e/g, "enter")
         .replace(/i/g, "imes")
         .replace(/a/g, "ai")
@@ -16,12 +15,11 @@ function encodeText() {
 
 function decodeText() {
     const inputText = document.getElementById('inputText').value;
-    if (/[A-ZÁÉÍÓÚÜÑ]/.test(inputText)) {
+    if (/[A-ZáéíóúÑ]/.test(inputText)) {
         alert('El texto no debe contener mayúsculas ni acentos.');
         return;
     }
-    const sanitizedText = inputText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Elimina acentos
-    let decodedText = sanitizedText
+    let decodedText = inputText
         .replace(/enter/g, "e")
         .replace(/imes/g, "i")
         .replace(/ai/g, "a")
